@@ -30,12 +30,12 @@ Mpf.CollectionHelpers.createSchema 'inventory',
   platform:
     type: String
 
-  # False means no preference
+  # false means no preference
   wrapped:
     type: Boolean
     defaultValue: false
 
-  # False means no preference
+  # false means no preference
   dlc:
     type: Boolean
     defaultValue: false
@@ -58,6 +58,7 @@ Mpf.CollectionHelpers.createSchema 'wishlist',
 
   gameId:
     type: SimpleSchema.RegEx.Id
+    optional: true
 
   title:
     type: String
@@ -65,12 +66,12 @@ Mpf.CollectionHelpers.createSchema 'wishlist',
   platform:
     type: String
 
-  # False means no preference
+  # false means no preference
   wrapped:
     type: Boolean
     defaultValue: false
 
-  # False means no preference
+  # false means no preference
   dlc:
     type: Boolean
     defaultValue: false
@@ -96,21 +97,24 @@ Mpf.CollectionHelpers.createSchema 'trades',
   wantIds:
     type: [SimpleSchema.RegEx.Id]
 
-  # XXX block if offset and want are simultaneously non-zero
+  # XXX block if offer and want are simultaneously non-zero
   offer:
     type: Number
     min: 0
+    defaultValue: 0
 
   want:
     type: Number
     min: 0
+    defaultValue: 0
 
-  # Should be updated to current date when user logs in.
+  # XXX Should be updated to current date when user logs in.
   activeAt:
     type: Date
 
   commentIds:
     type: [SimpleSchema.RegEx.Id]
+    defaultValue: []
 
   locationIds:
     type: [SimpleSchema.RegEx.Id]
