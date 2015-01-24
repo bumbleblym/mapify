@@ -12,9 +12,9 @@ Template.locations.helpers
 
 Template.locations.rendered = ->
   globalMarker = null
-  GoogleMaps.ready 'map', (map) ->
+  GoogleMaps.ready 'locations', (map) ->
     marker = null
-    geocoder = new google.maps.Geocoder();
+    geocoder = new google.maps.Geocoder()
     google.maps.event.addListener map.instance, 'click', (event) ->
       if marker?
         marker.setMap null
@@ -66,7 +66,7 @@ Template.locations.rendered = ->
         added: (loc) ->
           marker = new google.maps.Marker
             position: new google.maps.LatLng loc.latLng.lat, loc.latLng.lng
-            map: GoogleMaps.maps.map.instance
+            map: GoogleMaps.maps.locations.instance
             icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
           google.maps.event.addListener marker, 'click', ->
             $('#remove-location-form').css 'visibility', 'visible'
@@ -122,4 +122,3 @@ Template.locations.events
       _id: Session.get 'deleteMarkerId'
     $('#remove-location-form').css 'visibility', 'hidden'
     return false
-
