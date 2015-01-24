@@ -7,6 +7,12 @@ Template.locations.helpers
       }
 
 Template.locations.rendered = ->
+  GoogleMaps.ready 'map', (map) ->
+    google.maps.event.addListener map.instance, 'click', (event) ->
+      marker = new google.maps.Marker
+        position: event.latLng
+        map: map.instance
+
   markers = {}
 
   @autorun ->
