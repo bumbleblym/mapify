@@ -13,8 +13,14 @@ Router.route 'locations',
 Router.route 'inventory',
   title: 'Inventory'
 
+Router.route 'trades',
+  title: 'Trades'
+
 Router.onBeforeAction ->
   GoogleMaps.load()
   @next()
 ,
   only: ['locations']
+
+Router.onBeforeAction AccountsTemplates.ensureSignedIn,
+  except: ['home', 'atSignIn', 'atSignUp', 'atForgotPassword']

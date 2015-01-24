@@ -20,8 +20,15 @@
 
 <template name="navbarTopLeft">
   <ul class="nav navbar-nav">
+    {{#if currentUser}}
     <li><a href="{{pathFor route='locations'}}">Locations</a></li>
+    {{/if}}
+    {{#if currentUser}}
     <li><a href="{{pathFor route='inventory'}}">Inventory</a></li>
+    {{/if}}
+    {{#if currentUser}}
+    <li><a href="{{pathFor route='trades'}}">Trades</a></li>
+    {{/if}}
   </ul>
 </template>
 

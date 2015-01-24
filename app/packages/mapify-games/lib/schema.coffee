@@ -132,6 +132,10 @@ Mpf.CollectionHelpers.createSchema 'trades',
     min: 0
     defaultValue: 0
 
+  description:
+    type: String
+    optional: true
+
   # XXX Should be updated to current date when user logs in.
   activeAt:
     type: Date
