@@ -1,13 +1,47 @@
 <template name="locations">
   {{> googleMap name="map" options=mapOptions}}
-    <div id="addLocationForm">
-        <div id="addLocationFormTopBar">
-            <div id="addLocationFormTopBar-title">
+    <div id="addLocationForm" class="location-form">
+        <div class="form-top-bar">
+            <div class="form-top-bar-title">
                 Add a location
             </div>
-            <div id="addLocationFormTopBar-closeButton">
+            <div id="addLocationFormTopBar-closeButton" class="location-form-close-button">
               X
             </div>
         </div>
+        <div id="marker-location-details">
+            <h2>Selected Address</h2>
+            {{streetName}}
+            <br>
+            <br>
+            <form class="add-location-submit">
+                <div class="input-group" id="location-name-field">
+                    <input type="text" class="form-control" placeholder="Type a location name...">
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-success">Add Location</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+    <div id="remove-location-form" class="location-form">
+        <div class="form-top-bar">
+            <div class="form-top-bar-title">
+                Remove a location
+            </div>
+            <div id="remove-location-form-close-button" class="location-form-close-button">
+                X
+            </div>
+            <h2>{{locationName}}</h2>
+            <div>
+                {{streetName}}
+                <br>
+                <br>
+                <form class="remove-location-submit">
+                    <button type="submit" class="btn btn-danger">Remove Location</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </template>
