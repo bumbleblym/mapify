@@ -13,6 +13,9 @@ Router.route 'locations',
 Router.route 'inventory',
   title: 'Inventory'
 
+Router.route 'trades',
+  title: 'Trades'
+
 Router.onBeforeAction ->
   GoogleMaps.load()
   @next()
