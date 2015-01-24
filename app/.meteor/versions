@@ -41,6 +41,7 @@ livedata@1.0.12
 localstorage@1.0.2
 logging@1.0.6
 mapify-accounts@0.0.0
+mapify-accounts-ui@0.0.0
 mapify-base@0.0.0
 mapify-collections@0.0.0
 mapify-schemas@0.0.0
@@ -68,6 +69,7 @@ routepolicy@1.0.4
 service-configuration@1.0.3
 session@1.0.5
 sha@1.0.2
+softwarerero:accounts-t9n@1.0.5
 spacebars@1.0.5
 spacebars-compiler@1.0.4
 srp@1.0.2
@@ -77,5 +79,7 @@ twbs:bootstrap@3.3.1_2
 ui@1.0.5
 underscore@1.0.2
 url@1.0.3
+useraccounts:bootstrap@1.5.0
+useraccounts:core@1.5.0
 webapp@1.1.6
 webapp-hashing@1.0.2
