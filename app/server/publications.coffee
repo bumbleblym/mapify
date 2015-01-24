@@ -23,3 +23,38 @@ Meteor.publish 'wishlist', ->
   ,
     fields:
       gameId: false
+
+Meteor.publish 'myTrades', ->
+  return Mpf.Collections.trades.find
+    userId: @userId
+
+# XXX limit trades
+Meteor.publish 'trades', ->
+  sub = @
+
+  locationHandles = {}
+
+  publishTradeLocations = (id, locationIds) ->
+    locationsCursor = Mpf.Collections.locations.find
+      _id:
+        $in: locationIds
+
+    locationHandles[id] = Mongo.Collection._publishCursor locationsCursor, sub, 'locations'
+
+  tradeHandle = Mpf.Collections.trades.find().observeChanges
+    added: (id, fields) ->
+      publishTradeLocations id, fields.locationIds
+      sub.added 'trades', id, fields
+
+    changed: (id, fields) ->
+      sub.changed 'trades', id, fields
+
+    removed: (id) ->
+      locationHandles[id] && locationHandles[id].stop()
+
+      sub.removed 'trades', id
+
+  sub.ready()
+
+  sub.onStop ->
+    tradeHandle.stop()
