@@ -25,7 +25,8 @@ Template.locations.rendered = ->
 
       # Change color of selected marker
       marker.setIcon 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
-      previouslySelectedMarker.setIcon 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+      if previouslySelectedMarker?
+        previouslySelectedMarker.setIcon 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 
       globalMarker = marker
 
@@ -111,7 +112,11 @@ Template.locations.events
         lat: Session.get 'lat'
         lng: Session.get 'lng'
       address: Session.get 'address'
+    $('#addLocationForm').css 'visibility', 'hidden'
+    return false
   'submit .remove-location-submit': (event) ->
     Mpf.Collections.locations.remove
       _id: Session.get 'deleteMarkerId'
+    $('#remove-location-form').css 'visibility', 'hidden'
+    return false
 
