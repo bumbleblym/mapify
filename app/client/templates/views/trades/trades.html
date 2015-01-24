@@ -1,16 +1,21 @@
 <template name="trades">
-  <div class="container">
-    {{#autoForm collection="Mpf.Collections.trades" id="insertTradeForm" type="insert"}}
-    <fieldset>
-      <legend>Add Trade</legend>
-      <!-- XXX Add inventory and wishlist games -->
-      <!-- XXX Offer and want inputs allow decimals despite schemas -->
-      {{> afQuickField name='offer'}}
-      {{> afQuickField name='want'}}
-      {{> afQuickField name='description' rows=6}}
-      <!-- XXX Add location input -->
-    </fieldset>
-    <button type="submit" class="btn btn-primary">Add</button>
-    {{/autoForm}}
-  </div>
+    <div id="trade-area" class="container">
+        <div id="my-trade-area">
+          {{#autoForm collection="Mpf.Collections.trades" id="insertTradeForm" type="insert"}}
+              <fieldset>
+                  <legend>Add Trade</legend>
+                  <!-- XXX Add inventory and wishlist games -->
+                  <!-- XXX Offer and want inputs allow decimals despite schemas -->
+                {{> afQuickField name='offer'}}
+                {{> afQuickField name='want'}}
+                {{> afQuickField name='description' rows=6}}
+                  <!-- XXX Add location input -->
+              </fieldset>
+              <button type="submit" class="btn btn-primary">Add</button>
+          {{/autoForm}}
+        </div>
+        <div id="their-trade-area">
+
+        </div>
+    </div>
 </template>
