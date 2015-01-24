@@ -1,15 +1,32 @@
 <template name="inventory">
   <div class="container">
+      <div id="current-inventory-list">
+          
+      </div>
+
     {{#autoForm collection="Mpf.Collections.inventory" id="insertInventoryForm" type="insert"}}
     <fieldset>
-      <legend>Add to Inventory</legend>
-      {{> afQuickField name='title'}}
-      {{> afQuickField name='platform' options="allowed"}}
-      {{> afQuickField name='wrapped'}}
-      {{> afQuickField name='dlc'}}
-      {{> afQuickField name='description' rows=6}}
-    </fieldset>
-    <button type="submit" class="btn btn-primary">Add</button>
+      <div class="form-top-bar">
+          <div class="form-top-bar-title">
+              Add to Inventory
+          </div>
+          <div class="location-form-close-button">
+              X
+          </div>
+      </div>
+      <div id="add-inventory-form-body">
+        <div id="add-inventory-title">
+          {{> afQuickField name='title'}}
+        </div>
+        {{> afQuickField name='platform' options="allowed"}}
+        {{> afQuickField name='wrapped'}}
+        {{> afQuickField name='dlc'}}
+        {{> afQuickField name='description' rows=6}}
+      </div>
+      </fieldset>
+      <div id="add-inventory-form-button">
+          <button type="submit" class="btn btn-primary">Add</button>
+      </div>
     {{/autoForm}}
   </div>
 </template>
