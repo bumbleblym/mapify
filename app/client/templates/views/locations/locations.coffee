@@ -13,6 +13,13 @@ Template.locations.rendered = ->
         position: event.latLng
         map: map.instance
 
+      # Code for add location form
+      $('#addLocationForm').css 'visibility', 'visible'
+
+      $('#addLocationFormTopBar-closeButton').click ->
+        $('#addLocationForm').css 'visibility', 'hidden'
+        marker.setMap null
+
   markers = {}
 
   @autorun ->
@@ -34,3 +41,4 @@ Template.locations.rendered = ->
         removed: (loc) ->
           markers[loc._id].setMap null
           delete markers[loc._id]
+
