@@ -12,6 +12,7 @@ Package.onUse(function(api) {
     ]);
 
     api.addFiles([
+        'lib/games.coffee',
         'lib/schema.coffee'
     ]);
 

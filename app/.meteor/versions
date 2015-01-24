@@ -45,6 +45,7 @@ mapify-accounts@0.0.0
 mapify-accounts-ui@0.0.0
 mapify-base@0.0.0
 mapify-collections@0.0.0
+mapify-games@0.0.0
 mapify-locations@0.0.0
 mapify-schemas@0.0.0
 mapify-webapp@0.0.0

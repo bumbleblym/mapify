@@ -2,6 +2,7 @@ Mpf.CollectionHelpers.createSchema 'games',
   title:
     type: String
 
+  # XXX Validate that the platform is a real platform?
   platforms:
     type: [String]
 
@@ -15,6 +16,7 @@ Mpf.CollectionHelpers.createSchema 'inventory',
 
   gameId:
     type: SimpleSchema.RegEx.Id
+    optional: true
 
   title:
     type: String
@@ -25,10 +27,12 @@ Mpf.CollectionHelpers.createSchema 'inventory',
   # False means no preference
   wrapped:
     type: Boolean
+    defaultValue: false
 
   # False means no preference
   dlc:
     type: Boolean
+    defaultValue: false
 
   pic:
     type: String
@@ -58,10 +62,12 @@ Mpf.CollectionHelpers.createSchema 'wishlist',
   # False means no preference
   wrapped:
     type: Boolean
+    defaultValue: false
 
   # False means no preference
   dlc:
     type: Boolean
+    defaultValue: false
 
   description:
     type: String
