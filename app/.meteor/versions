@@ -45,8 +45,13 @@ mapify-accounts@0.0.0
 mapify-accounts-ui@0.0.0
 mapify-base@0.0.0
 mapify-collections@0.0.0
+<<<<<<< HEAD
 mapify-games@0.0.0
+=======
+mapify-comments@0.0.0
+>>>>>>> dev
 mapify-locations@0.0.0
+mapify-notifications@0.0.0
 mapify-schemas@0.0.0
 mapify-webapp@0.0.0
 matb33:collection-hooks@0.7.9

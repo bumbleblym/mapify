@@ -11,6 +11,8 @@ mapify-accounts
 mapify-webapp
 mapify-accounts-ui
 mapify-locations
+mapify-comments
+mapify-notifications
 
 mapify-games
 

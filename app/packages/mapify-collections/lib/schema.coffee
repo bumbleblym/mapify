@@ -1,3 +1,6 @@
+SimpleSchema.messages
+  sameIds: '[label] cannot be the same as another id field'
+
 Mpf.CollectionHelpers.createSchema 'createdAt',
   createdAt:
     type: Date
