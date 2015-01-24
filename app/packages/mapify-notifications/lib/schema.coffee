@@ -11,4 +11,8 @@ Mpf.CollectionHelpers.createSchema 'notifications',
       if @value == @field('userId').value
         return 'sameIds'
 
+  read:
+    type: Boolean
+    defaultValue: false
+
 Mpf.CollectionHelpers.addToSchema 'notifications', Mpf.Schemas.createdAt
