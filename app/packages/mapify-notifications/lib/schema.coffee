@@ -11,6 +11,10 @@ Mpf.CollectionHelpers.createSchema 'notifications',
       if @value == @field('userId').value
         return 'sameIds'
 
+  senderUsername:
+    type: String
+    regEx: Mpf.SchemaHelpers.getSchema('users').username.regEx
+
   read:
     type: Boolean
     defaultValue: false
