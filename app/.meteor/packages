@@ -11,3 +11,5 @@ mapify-accounts
 mapify-webapp
 mapify-accounts-ui
 mapify-locations
+
+dburles:google-maps@1.0.3

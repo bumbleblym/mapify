@@ -1,7 +1,6 @@
 Router.configure
   layoutTemplate: 'layout'
 
-
 Router.route '/', ->
   @render 'home'
 ,
@@ -10,3 +9,9 @@ Router.route '/', ->
 
 Router.route 'locations',
   title: 'Locations'
+
+Router.onBeforeAction ->
+  GoogleMaps.load()
+  @next()
+,
+  only: ['locations']

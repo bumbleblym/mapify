@@ -1,0 +1,1 @@
+Mpf.CollectionHelpers.attachSchema 'users'
