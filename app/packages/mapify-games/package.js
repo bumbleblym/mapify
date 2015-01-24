@@ -17,6 +17,7 @@ Package.onUse(function(api) {
     ]);
 
     api.addFiles([
+        'server/hooks.coffee',
         'server/security.coffee'
     ], 'server');
 });

@@ -6,6 +6,11 @@ Mpf.CollectionHelpers.createSchema 'games',
   platforms:
     type: [String]
 
+  # XXX Create method to verify a form
+  unverifiedPlatforms:
+    type: [String]
+    optional: true
+
   verified:
     type: Boolean
 
