@@ -1,4 +1,4 @@
-Mpf.CollectionHelpers.createSchema 'Users',
+Mpf.CollectionHelpers.createSchema 'users',
   username:
     type: String
     regEx: /^[a-zA-Z0-9_]{4,16}$/
