@@ -84,6 +84,8 @@ Template.locations.rendered = ->
 
             # Change color of selected marker
             marker.setIcon 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+            if previouslySelectedMarker?
+              previouslySelectedMarker.setIcon 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
             previouslySelectedMarker = marker
 
             Session.set 'locationName', selectedMarker[0].name
