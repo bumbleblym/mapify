@@ -13,6 +13,9 @@ Router.route 'locations',
 Router.route 'inventory',
   title: 'Inventory'
 
+Router.route 'wishlist',
+  title: 'Wishlist'
+
 Router.route 'trades',
   title: 'Trades'
 
