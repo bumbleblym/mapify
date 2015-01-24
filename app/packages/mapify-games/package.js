@@ -1,14 +1,14 @@
 Package.describe({
-    summary: 'mapify accounts package'
+    summary: 'mapify games package'
 });
 
 Package.onUse(function(api) {
     api.use([
-        'mapify-collections'
+        'mapify-accounts'
     ]);
 
     api.imply([
-        'mapify-collections'
+        'mapify-accounts'
     ]);
 
     api.addFiles([
