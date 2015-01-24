@@ -45,8 +45,8 @@ mapify-accounts@0.0.0
 mapify-accounts-ui@0.0.0
 mapify-base@0.0.0
 mapify-collections@0.0.0
-mapify-games@0.0.0
 mapify-comments@0.0.0
+mapify-games@0.0.0
 mapify-locations@0.0.0
 mapify-notifications@0.0.0
 mapify-schemas@0.0.0
@@ -71,6 +71,7 @@ reactive-var@1.0.4
 reload@1.1.2
 retry@1.0.2
 routepolicy@1.0.4
+sergeyt:typeahead@0.10.5_10
 service-configuration@1.0.3
 session@1.0.5
 sha@1.0.2
