@@ -21,3 +21,6 @@ Router.onBeforeAction ->
   @next()
 ,
   only: ['locations']
+
+Router.onBeforeAction AccountsTemplates.ensureSignedIn,
+  except: ['home', 'atSignIn', 'atSignUp', 'atForgotPassword']
