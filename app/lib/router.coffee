@@ -17,7 +17,7 @@ Router.route 'wishlist',
   title: 'Wishlist'
 
 Router.route 'trades',
-  title: 'Trades'
+  title: 'My Trades'
 
 Router.onBeforeAction ->
   GoogleMaps.load()
