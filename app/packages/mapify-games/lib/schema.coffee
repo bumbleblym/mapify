@@ -5,11 +5,12 @@ Mpf.CollectionHelpers.createSchema 'games',
   # XXX Validate that the platform is a real platform?
   platforms:
     type: [String]
+    defaultValue: []
 
-  # XXX Create method to verify a form
+  # XXX Create method to verify platform
   unverifiedPlatforms:
     type: [String]
-    optional: true
+    defaultValue: []
 
   verified:
     type: Boolean

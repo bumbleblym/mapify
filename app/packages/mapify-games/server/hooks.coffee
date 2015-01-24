@@ -17,5 +17,5 @@ Mpf.Collections.inventory.before.insert (userId, doc) ->
   else
     Mpf.Collections.games.insert
       title: doc.title
-      platforms: [doc.platform]
+      unverifiedPlatforms: [doc.platform]
       verified: false
