@@ -47,6 +47,7 @@ Template.locations.rendered = ->
 
       # Code for add location form
       $('#addLocationForm').css 'visibility', 'visible'
+      $("input[name='add-location']").val('')
       $('#remove-location-form').css 'visibility', 'hidden'
 
       $('#addLocationFormTopBar-closeButton').click ->
