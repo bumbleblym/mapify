@@ -11,7 +11,7 @@ schemaHelpers = Mpf.helpers.createNamespace 'SchemaHelpers',
 
   addToSchema: (name, schemaObj, options) ->
     if name !of schemas
-      throw new Error "No such schema: #{name} add"
+      throw new Error "No such schema: #{name}"
 
     unless options?.overwrite
       oldProps = @getSchemaProperties name
@@ -24,12 +24,12 @@ schemaHelpers = Mpf.helpers.createNamespace 'SchemaHelpers',
 
   getSchema: (name) ->
     if name !of schemas
-      throw new Error "No such schema: #{name} get"
+      throw new Error "No such schema: #{name}"
 
     return schemas[name].schema()
 
   getSchemaProperties: (name) ->
     if name !of schemas
-      throw new Error "No such schema: #{name} props"
+      throw new Error "No such schema: #{name}"
 
     return _.keys @getSchema name
