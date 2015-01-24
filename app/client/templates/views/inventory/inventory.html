@@ -1,0 +1,15 @@
+<template name="inventory">
+  <div class="container">
+    {{#autoForm collection="Mpf.Collections.inventory" id="insertInventoryForm" type="insert"}}
+    <fieldset>
+      <legend>Add to Inventory</legend>
+      {{> afQuickField name='title'}}
+      {{> afQuickField name='platform' options="allowed"}}
+      {{> afQuickField name='wrapped'}}
+      {{> afQuickField name='dlc'}}
+      {{> afQuickField name='description' rows=6}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Add</button>
+    {{/autoForm}}
+  </div>
+</template>

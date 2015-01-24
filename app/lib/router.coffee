@@ -10,6 +10,9 @@ Router.route '/', ->
 Router.route 'locations',
   title: 'Locations'
 
+Router.route 'inventory',
+  title: 'Inventory'
+
 Router.onBeforeAction ->
   GoogleMaps.load()
   @next()
