@@ -1,41 +1,50 @@
-#addLocationForm {
+.location-form {
   position: fixed;
   bottom: 30px;
   right: 20px;
   background-color: white;
-  height: 400px;
+  height: 200px;
   width: 400px;
   -webkit-box-shadow: 0px 0px 4px 2px rgba(84, 84, 84, 0.49);
   -moz-box-shadow: 0px 0px 4px 2px rgba(84, 84, 84, 0.49);
   box-shadow: 0px 0px 4px 2px rgba(84, 84, 84, 0.49);
   visibility: hidden;
+  text-align: center;
 }
 
-#addLocationFormTopBar {
+.form-top-bar {
   height: 40px;
   padding-left: 10px;
   background-color: currentcolor;
 
 }
 
-#addLocationFormTopBar-title {
+.form-top-bar-title {
   height: 100%;
   padding-top: 10px;
-  padding-left: 10px;
   color: white;
 }
 
-#addLocationFormTopBar-closeButton {
+.location-form-close-button {
   height: 40px;
   width: 40px;
   position: absolute;
   right: 0px;
   top: 0px;
-  padding-left: 16px;
   padding-top: 10px;
   color: white;
+  cursor: default;
 }
 
 #addLocationFormTopBar-closeButton:hover {
   background-color: #494949;
+}
+
+#remove-location-form-close-button:hover {
+  background-color: #494949;
+}
+
+#location-name-field {
+  padding-left: 10px;
+  padding-right: 10px;
 }
