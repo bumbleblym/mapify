@@ -1,3 +1,24 @@
+PLATFORMS = [
+  'PS4'
+  'Xbox One'
+  'PS3'
+  'Xbox 360'
+  'PC'
+  'Wii-U'
+  '3DS'
+  'PS Vita'
+  'PS2'
+  'PS1'
+  'Xbox'
+  'Wii'
+  'DS'
+  'GameCube'
+  'N64'
+  'GameBoy Advance'
+  'PSP'
+  'Dreamcast'
+]
+
 Mpf.CollectionHelpers.createSchema 'games',
   title:
     type: String
@@ -5,6 +26,7 @@ Mpf.CollectionHelpers.createSchema 'games',
   # XXX Validate that the platform is a real platform?
   platforms:
     type: [String]
+    allowedValues: PLATFORMS
     defaultValue: []
 
   # XXX Create method to verify platform
@@ -29,6 +51,7 @@ Mpf.CollectionHelpers.createSchema 'inventory',
 
   platform:
     type: String
+    allowedValues: PLATFORMS
 
   # False means no preference
   wrapped:
@@ -64,6 +87,7 @@ Mpf.CollectionHelpers.createSchema 'wishlist',
 
   platform:
     type: String
+    allowedValues: PLATFORMS
 
   # False means no preference
   wrapped:
