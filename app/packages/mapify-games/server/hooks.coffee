@@ -1,4 +1,4 @@
-Mpf.Collections.inventory.before.insert (userId, doc) ->
+handleGameTitle = (userId, doc) ->
   gameDoc = Mpf.Collections.games.findOne
     title: doc.title
   ,
@@ -19,3 +19,7 @@ Mpf.Collections.inventory.before.insert (userId, doc) ->
       title: doc.title
       unverifiedPlatforms: [doc.platform]
       verified: false
+
+
+Mpf.Collections.inventory.before.insert handleGameTitle
+Mpf.Collections.wishlist.before.insert handleGameTitle
