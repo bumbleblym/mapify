@@ -19,7 +19,7 @@ Mpf.CollectionHelpers.createSchema 'locations',
     type: String
 
   latLng:
-    type: schemas.latLng
+    type: Mpf.Schemas.latLng
 
   address:
     type: String
