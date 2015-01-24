@@ -8,4 +8,18 @@ Meteor.publish 'locations', ->
     userId: @userId
   ,
     fields:
-      createdAt: 0
+      createdAt: false
+
+Meteor.publish 'inventory', ->
+  return Mpf.Collections.inventory.find
+    userId: @userId
+  ,
+    fields:
+      gameId: false
+
+Meteor.publish 'wishlist', ->
+  return Mpf.Collections.wishlist.find
+    userId: @userId
+  ,
+    fields:
+      gameId: false
