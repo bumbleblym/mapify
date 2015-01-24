@@ -1,7 +1,55 @@
 <template name="inventory">
   <div class="container">
       <div id="current-inventory-list">
-          
+          <div class="panel panel-default">
+              <div id="my-inventory-header">
+                  <div id="my-inventory-header-title" class="panel-heading"><strong>My Inventory</strong></div>
+                  <div id="add-new-inventory-modal-popup">
+                      <button type="button" id="show-add-inventory-modal" class="btn btn-success">Add new inventory</button>
+                  </div>
+              </div>
+
+              <table class="table">
+                  <thead>
+                    <tr>
+                        <th>Game Title</th>
+                        <th>Description</th>
+                        <th>Platform</th>
+                        <th>Wrapped</th>
+                        <th>DLC</th>
+                    </tr>
+                  </thead>
+                <tbody>
+                {{#each inventoryGames}}
+                  <tr>
+                      <td style="max-width: 100px">
+                        {{title}}
+                      </td>
+                      <td style="max-width: 100px">
+                        {{description}}
+                      </td>
+                      <td>
+                        {{platform}}
+                      </td>
+                      <td>
+                        {{#if wrapped}}
+                            Yes
+                          {{else}}
+                            No
+                          {{/if}}
+                      </td>
+                      <td>
+                        {{#if dlc}}
+                            Yes
+                        {{else}}
+                            No
+                        {{/if}}
+                      </td>
+                  </tr>
+                {{/each}}
+                </tbody>
+              </table>
+          </div>
       </div>
 
     {{#autoForm collection="Mpf.Collections.inventory" id="insertInventoryForm" type="insert"}}
