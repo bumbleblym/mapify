@@ -8,3 +8,4 @@ Meteor.publish 'locations', ->
 Meteor.publish 'notifications', ->
   return Mpf.Collections.notifications.find
     userId: @userId
+    read: false
