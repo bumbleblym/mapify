@@ -25,12 +25,12 @@ Template.trades.helpers
   displayWantIds: ->
     wantIds = Session.get 'wantIds'
     if wantIds?
-      return Mpf.Collections.inventory.find
+      return Mpf.Collections.wishlist.find
         _id:
           $in: wantIds
     else
       wantIds = []
-      return Mpf.Collections.inventory.find
+      return Mpf.Collections.wishlist.find
         _id:
           $in: wantIds
 
