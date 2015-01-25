@@ -35,4 +35,4 @@ Router.onBeforeAction ->
   only: ['locations']
 
 Router.onBeforeAction AccountsTemplates.ensureSignedIn,
-  except: ['home', 'atSignIn', 'atSignUp', 'atForgotPassword']
+  except: ['home', 'atSignIn', 'atSignUp', 'atForgotPassword', 'searchTrades']
