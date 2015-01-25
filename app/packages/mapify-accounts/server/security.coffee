@@ -28,13 +28,19 @@ Security.defineMethod 'isLocationPartOfTrade',
 Security.defineMethod 'isValidTradePage',
   fetch: ['userId']
   deny: (type, arg, userId, doc, fieldNames, modifier) ->
+    if not doc.locationIds? || doc.locationIds.length < 1
+      return true
+    if (not doc.haveIds? || doc.haveIds.length < 1) and
+        (not doc.wantIds? || doc.wantIds.length < 1)
+      return true
+
     for id in doc.locationIds
       item = Mpf.Collections.locations.findOne
         _id: id
       ,
         userId: true
       if not item? or item.userId != userId
-        return false
+        return true
 
     for id in doc.haveIds
       item = Mpf.Collections.inventory.findOne
@@ -42,7 +48,7 @@ Security.defineMethod 'isValidTradePage',
       ,
         userId: true
       if not item? or item.userId != userId
-        return false
+        return true
 
     for id in doc.wantIds
       item = Mpf.Collections.wishlist.findOne
@@ -50,4 +56,5 @@ Security.defineMethod 'isValidTradePage',
       ,
         userId: true
       if not item? or item.userId != userId
-        return false
+        return true
+    return false
