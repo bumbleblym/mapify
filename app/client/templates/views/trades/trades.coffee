@@ -35,12 +35,12 @@ Template.trades.helpers
     locations = Session.get 'locations'
     if locations?
       return Mpf.Collections.locations.find
-        name:
+        _id:
           $in: locations
     else
       locations = []
       return Mpf.Collections.locations.find
-        name:
+        _id:
           $in: locations
 
 
@@ -85,5 +85,8 @@ AutoForm.hooks
       insert: (doc, template) ->
         doc.userId = Meteor.userId()
         doc.activeAt = new Date
+        doc.haveIds = Session.get 'haveIds'
+        doc.wantIds = Session.get 'wantIds'
+        doc.locationIds = Session.get 'locations'
 
         return doc
