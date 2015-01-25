@@ -1,170 +1,199 @@
 <template name="trades">
-    <div class="container">
-        <div id="current-inventory-list">
-            <div class="panel panel-default">
-                <div id="my-inventory-header">
-                    <div id="my-inventory-header-title" class="panel-heading"><strong>My Offers</strong></div>
-                    <div id="add-new-inventory-modal-popup">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            Create a new trade
-                        </button>
-                    </div>
-                </div>
-
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Game Titles Selling</th>
-                        <th>Game Titles Request</th>
-                        <th>Money Offering</th>
-                        <th>Money Requesting</th>
-                        <th>Active at</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{#each trades}}
-                        <tr>
-                            <td style="max-width: 100px">
-                              {{haveIds}}
-                            </td>
-                            <td style="max-width: 100px">
-                              {{wantIds}}
-                            </td>
-                            <td>
-                              {{offer}}
-                            </td>
-                            <td>
-                              {{want}}
-                            </td>
-                            <td>
-                              {{activeAt}}
-                            </td>
-                        </tr>
-                    {{/each}}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Create a new Trade</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div id="my-offer" class="col-centered trade-areas">
-                                  {{#autoForm collection="Mpf.Collections.trades" id="insertTradeForm" type="insert"}}
-                                      <fieldset>
-                                          <legend>My Offers</legend>
-                                          <!-- XXX Add inventory and wishlist games -->
-                                          <!-- XXX Offer and want inputs allow decimals despite schemas -->
-                                        {{> afQuickField name='offer'}}
-                                          <div class="select-game-field">
-                                              <label class="control-label">My Inventory</label><br>
-                                            {{#each displayHaveIds}}
-                                                <div class="panel panel-default chosen-games">
-                                                    <div class="panel-body remove-padding-top">
-                                                      {{title}}
-                                                    </div>
-                                                </div>
-                                            {{/each}}
-                                              <select id="select-haveIds" class="custom-dropdown">
-                                                {{#each inventoryGame}}
-                                                    <option value={{_id}}>{{title}}</option>
-                                                {{/each}}
-                                              </select>
-                                          </div>
-
-                                          <div class="add-have-game-buttom">
-                                              <button type="button" class="btn btn-primary">Add Game</button>
-                                          </div>
-
-                                          <div class="remove-have-game-buttom">
-                                              <button type="button" class="btn btn-danger">Reset</button>
-                                          </div>
-                                          <br>
-                                      </fieldset>
-                                  {{/autoForm}}
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="col-centered trade-areas">
-                                  {{#autoForm collection="Mpf.Collections.trades" id="insertTradeForm" type="insert"}}
-                                      <fieldset>
-                                          <legend>My Requests</legend>
-                                        {{> afQuickField name='want'}}
-                                          <div class="select-game-field">
-                                              <label class="control-label">My Wishlist</label><br>
-                                            {{#each displayWantIds}}
-                                                <div class="panel panel-default chosen-games">
-                                                    <div class="panel-body remove-padding-top">
-                                                      {{title}}
-                                                    </div>
-                                                </div>
-                                            {{/each}}
-                                              <select id="select-wantIds" class="custom-dropdown">
-                                                {{#each wishlistGame}}
-                                                    <option value={{_id}}>{{title}}</option>
-                                                {{/each}}
-                                              </select>
-                                          </div>
-                                          <div class="add-want-game-buttom">
-                                              <button type="button" class="btn btn-primary">Add Game</button>
-                                          </div>
-
-                                          <div class="remove-want-game-buttom">
-                                              <button type="button" class="btn btn-danger">Reset</button>
-                                          </div>
-                                          <br>
-                                      </fieldset>
-                                  {{/autoForm}}
-                                </div>
-                            </div>
+  <div class="container">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      Add Trade
+    </button>
+    {{#each trades}}
+    {{> trade}}
+    <hr />
+    {{/each}}
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add Trade</h4>
+          </div>
+          <div class="modal-body">
+            {{#autoForm collection="Mpf.Collections.trades" id="insertTradeForm" type="insert"}}
+              <fieldset>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="panel panel-primary">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Offering</h3>
+                      </div>
+                      {{#if inventoryGames}}
+                      <div class="table-responsive">
+                        <table class="sortable table table-bordered table-striped">
+                          <tbody>
+                            {{#each inventoryGames}}
+                            <tr>
+                              <td>{{this.title}}</td>
+                              <td><input class="inventory-game" type="checkbox" value="{{this._id}}"></td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                      </div>
+                      {{else}}
+                      <div class="panel-body">
+                        <div class="alert alert-info">
+                          No games here!
                         </div>
-                        <div class="row">
-                            <div id="confirmation-box" class="trade-areas">
-                                <div class="select-game-field">
-                                    <label class="control-label">My Locations</label><br>
-                                  {{#each displayLocations}}
-                                      <div class="panel panel-default chosen-games">
-                                          <div class="panel-body remove-padding-top">
-                                            {{name}}
-                                          </div>
-                                      </div>
-                                  {{/each}}
-                                    <select id="select-location-name" class="custom-dropdown">
-                                      {{#each myLocations}}
-                                          <option value={{_id}}>{{name}}</option>
-                                      {{/each}}
-                                    </select>
-                                </div>
-                                <div class="add-location-buttom">
-                                    <button type="button" class="btn btn-primary">Add Location</button>
-                                </div>
-
-                                <div class="remove-location-buttom">
-                                    <button type="button" class="btn btn-danger">Reset</button>
-                                </div>
-                              {{#autoForm collection="Mpf.Collections.trades" id="insertTradeForm" type="insert"}}
-                                {{> afQuickField name='description' rows=6}}
-                                  <!--<button type="submit" class="btn btn-primary">Start Trade</button>-->
-                              {{/autoForm}}
-                            </div>
+                      </div>
+                      {{/if}}
+                      <div class="panel-footer">
+                        {{> afQuickField name='offer'}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="panel panel-primary">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Requesting</h3>
+                      </div>
+                      {{#if wishlistGames}}
+                      <div class="table-responsive">
+                        <table class="sortable table table-bordered table-striped">
+                          <tbody>
+                            {{#each wishlistGames}}
+                            <tr>
+                              <td>{{this.title}}</td>
+                              <td><input class="wishlist-game" type="checkbox" value="{{this._id}}"></td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                      </div>
+                      {{else}}
+                      <div class="panel-body">
+                        <div class="alert alert-info">
+                          No games here!
                         </div>
+                      </div>
+                      {{/if}}
+                      <div class="panel-footer">
+                        {{> afQuickField name='want'}}
+                      </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" id="close-modal" class="btn btn-default" data-dismiss="modal">Close</button>
-                        {{#autoForm collection="Mpf.Collections.trades" id="insertTradeForm" type="insert"}}
-                          <button type="submit" class="btn btn-primary">Start Trade</button>
-                        {{/autoForm}}
-                    </div>
+                  </div>
                 </div>
-            </div>
+              </fieldset>
+              <button type="submit" class="btn btn-primary">Insert</button>
+            {{/autoForm}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+</template>
+
+<template name="trade">
+  {{activeAt}}
+  <div class="row">
+    <!-- Offering -->
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Offering</h3>
+        </div>
+        {{#if haveIds}}
+        <div class="table-responsive">
+          <table class="sortable table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Platform</th>
+              <th>Description</th>
+              <th>Wrapped?</th>
+              <th>Includes DLC?</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each haveIds}}
+            {{#with offeringGame this}}
+            <tr>
+              <td>{{title}}</td>
+              <td>{{platform}}</td>
+              <td>{{#if description}}{{description}}{{else}}none{{/if}}</td>
+              <td>{{#if wrapped}}Yes{{else}}No{{/if}}</td>
+              <td>{{#if dlc}}Yes{{else}}No{{/if}}</td>
+            </tr>
+            {{/with}}
+            {{/each}}
+          </tbody>
+          </table>
+        </div>
+        {{else}}
+        <div class="panel-body">
+          <div class="alert alert-info">
+            No games here!
+          </div>
+        </div>
+        {{/if}}
+        {{#if offer}}
+        <div class="panel-footer">
+          <div class="input-group">
+            <span class="input-group-addon">Topup ${{offer}}</span>
+          </div>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+    <!-- Requesting -->
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Requesting</h3>
+        </div>
+        {{#if wantIds}}
+        <div class="table-responsive">
+          <table class="sortable table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Platform</th>
+                <th>Description</th>
+                <th>Wrapped?</th>
+                <th>Includes DLC?</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each wantIds}}
+              {{#with requestingGame this}}
+              <tr>
+                <td>{{title}}</td>
+                <td>{{platform}}</td>
+                <td>{{#if description}}{{description}}{{else}}none{{/if}}</td>
+                <td>{{#if wrapped}}Yes{{else}}No{{/if}}</td>
+                <td>{{#if dlc}}Yes{{else}}No{{/if}}</td>
+              </tr>
+              {{/with}}
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        {{else}}
+        <div class="panel-body">
+          <div class="alert alert-info">
+            No games here!
+          </div>
+        </div>
+        {{/if}}
+        {{#if want}}
+        <div class="panel-footer">
+          <div class="input-group">
+            <span class="input-group-addon">Topup ${{want}}</span>
+          </div>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
 </template>
