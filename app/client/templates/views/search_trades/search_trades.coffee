@@ -11,9 +11,9 @@ Template.searchTrades.rendered = ->
 
   @autorun ->
     if GoogleMaps.loaded()
-      Mpf.Collections.trades.find
-        userId:
-          $ne: Meteor.userId()
+      Mpf.Collections.trades.find {}
+        #userId:
+        #  $ne: Meteor.userId()
       .observe
         added: (trade) ->
           tradeLocations = []
