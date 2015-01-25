@@ -6,6 +6,31 @@ Template.searchTrades.helpers
         zoom: 11
       }
 
+class Marker
+  constructor: (trade, loc) ->
+    @trades = {}
+    @trades[trade._id] = trade
+
+    @marker = new google.maps.Marker
+      position: new google.maps.LatLng loc.latLng.lat, loc.latLng.lng
+      map: GoogleMaps.maps.searchTrades.instance
+      icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+
+  addTrade: (trade) ->
+    @trades[trade._id] = trade
+
+  tryRemoveTrade: (trade) ->
+    if trade._id !of @trades
+      return false
+
+    delete @trades[trade._id]
+    if _.isEmpty @trades
+      @marker.setMap null
+      return true
+    return false
+
+
+
 Template.searchTrades.rendered = ->
   markers = {}
 
@@ -19,24 +44,21 @@ Template.searchTrades.rendered = ->
           tradeLocations = []
 
           _.each trade.locationIds, (locationId) ->
-            loc = Mpf.Collections.locations.findOne locationId
-
-            marker = new google.maps.Marker
-              position: new google.maps.LatLng loc.latLng.lat, loc.latLng.lng
-              map: GoogleMaps.maps.searchTrades.instance
-              icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-
-            tradeLocations.push marker
-
-          markers[trade._id] = tradeLocations
+            if locationId of markers
+              markers[locationId].addTrade trade
+            else
+              loc = Mpf.Collections.locations.findOne locationId
+              markers[locationId] = new Marker(trade, loc)
 
         changed: (newTrade, oldTrade) ->
           @removed oldTrade
           @added newTrade
 
         removed: (trade) ->
-          tradeLocations = markers[trade._id]
-          _.each tradeLocations, (marker) ->
-            marker.setMap null
+          removed = []
+          for locId of markers
+            if markers[locId].tryRemoveTrade trade
+              removed.push locId
 
-          delete markers[trade._id]
+          for locId in removed
+            delete markers[locId]
