@@ -1,16 +1,105 @@
 <template name="trades">
-  <div class="container">
-    {{#autoForm collection="Mpf.Collections.trades" id="insertTradeForm" type="insert"}}
-    <fieldset>
-      <legend>Add Trade</legend>
-      <!-- XXX Add inventory and wishlist games -->
-      <!-- XXX Offer and want inputs allow decimals despite schemas -->
-      {{> afQuickField name='offer'}}
-      {{> afQuickField name='want'}}
-      {{> afQuickField name='description' rows=6}}
-      <!-- XXX Add location input -->
-    </fieldset>
-    <button type="submit" class="btn btn-primary">Add</button>
-    {{/autoForm}}
-  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+              <div id="my-offer" class="col-centered trade-areas">
+                {{#autoForm collection="Mpf.Collections.trades" id="insertTradeForm" type="insert"}}
+                    <fieldset>
+                        <legend>My Offers</legend>
+                        <!-- XXX Add inventory and wishlist games -->
+                        <!-- XXX Offer and want inputs allow decimals despite schemas -->
+                      {{> afQuickField name='offer'}}
+                      <div class="select-game-field">
+                          <label class="control-label">My Inventory</label><br>
+                          {{#each displayHaveIds}}
+                              <div class="panel panel-default chosen-games">
+                                  <div class="panel-body remove-padding-top">
+                                    {{title}}
+                                  </div>
+                              </div>
+                          {{/each}}
+                          <select id="select-haveIds" class="custom-dropdown">
+                            {{#each inventoryGame}}
+                                <option value={{_id}}>{{title}}</option>
+                            {{/each}}
+                          </select>
+                      </div>
+
+                      <div class="add-have-game-buttom">
+                          <button type="button" class="btn btn-primary">Add Game</button>
+                      </div>
+
+                      <div class="remove-have-game-buttom">
+                          <button type="button" class="btn btn-danger">Reset</button>
+                      </div>
+                      <br>
+                    </fieldset>
+                {{/autoForm}}
+              </div>
+            </div>
+          <div class="col-lg-6">
+            <div class="col-centered trade-areas">
+              {{#autoForm collection="Mpf.Collections.trades" id="insertTradeForm" type="insert"}}
+                  <fieldset>
+                      <legend>My Requests</legend>
+                    {{> afQuickField name='want'}}
+                      <div class="select-game-field">
+                          <label class="control-label">My Wishlist</label><br>
+                        {{#each displayWantIds}}
+                            <div class="panel panel-default chosen-games">
+                                <div class="panel-body remove-padding-top">
+                                  {{title}}
+                                </div>
+                            </div>
+                        {{/each}}
+                          <select id="select-wantIds" class="custom-dropdown">
+                            {{#each inventoryGame}}
+                                <option value={{_id}}>{{title}}</option>
+                            {{/each}}
+                          </select>
+                      </div>
+                      <div class="add-want-game-buttom">
+                          <button type="button" class="btn btn-primary">Add Game</button>
+                      </div>
+
+                      <div class="remove-want-game-buttom">
+                          <button type="button" class="btn btn-danger">Reset</button>
+                      </div>
+                      <br>
+                  </fieldset>
+              {{/autoForm}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div id="confirmation-box" class="trade-areas">
+              <div class="select-game-field">
+                  <label class="control-label">My Locations</label><br>
+                {{#each displayLocations}}
+                    <div class="panel panel-default chosen-games">
+                        <div class="panel-body remove-padding-top">
+                          {{name}}
+                        </div>
+                    </div>
+                {{/each}}
+                  <select id="select-location-name" class="custom-dropdown">
+                    {{#each myLocations}}
+                        <option value={{_id}}>{{name}}</option>
+                    {{/each}}
+                  </select>
+              </div>
+              <div class="add-location-buttom">
+                  <button type="button" class="btn btn-primary">Add Location</button>
+              </div>
+
+              <div class="remove-location-buttom">
+                  <button type="button" class="btn btn-danger">Reset</button>
+              </div>
+            {{#autoForm collection="Mpf.Collections.trades" id="insertTradeForm" type="insert"}}
+              {{> afQuickField name='description' rows=6}}
+                <button type="submit" class="btn btn-primary">Start Trade</button>
+            {{/autoForm}}
+          </div>
+        </div>
+    </div>
 </template>
