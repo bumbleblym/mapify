@@ -1,4 +1,7 @@
 Template.trades.helpers
+  trades: ->
+    return Mpf.Collections.trades.find
+      userId: Meteor.userId()
   inventoryGame: ->
     return Mpf.Collections.inventory.find
       userId: Meteor.userId()
@@ -88,5 +91,10 @@ AutoForm.hooks
         doc.haveIds = Session.get 'haveIds'
         doc.wantIds = Session.get 'wantIds'
         doc.locationIds = Session.get 'locations'
+        Session.set 'haveIds', []
+        Session.set 'wantIds', []
+        Session.set 'locations', []
+        alert 'hihi'
+        $('#close-modal').click()
 
         return doc
