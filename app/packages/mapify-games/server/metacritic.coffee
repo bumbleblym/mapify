@@ -1,8 +1,7 @@
 # Create games namespace
-games = Mpf.helpers.createNamespace 'Games'
 mashapeKey = Meteor.settings.mashapeKey
 
-games.lookupAndUpdateDatabase = (name) ->
+Mpf.Games.lookupAndUpdateDatabase = (name) ->
   queryGames name, (error, result) ->
     if error?
       console.log "Failed to retrieve data from Mashape"
