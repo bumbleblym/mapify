@@ -2,87 +2,34 @@ Template.trades.helpers
   trades: ->
     return Mpf.Collections.trades.find
       userId: Meteor.userId()
-  inventoryGame: ->
+
+  inventoryGames: ->
     return Mpf.Collections.inventory.find
       userId: Meteor.userId()
-  wishlistGame: ->
+
+  wishlistGames: ->
     return Mpf.Collections.wishlist.find
       userId: Meteor.userId()
-  myLocations: ->
-    return Mpf.Collections.locations.find
-      userId: Meteor.userId()
-  displayHaveIds: ->
-    haveIds = Session.get 'haveIds'
-    if haveIds?
-      return Mpf.Collections.inventory.find
-        _id:
-          $in: haveIds
-    else
-      haveIds = []
-      return Mpf.Collections.inventory.find
-        _id:
-          $in: haveIds
-  displayWantIds: ->
-    wantIds = Session.get 'wantIds'
-    if wantIds?
-      return Mpf.Collections.wishlist.find
-        _id:
-          $in: wantIds
-    else
-      wantIds = []
-      return Mpf.Collections.wishlist.find
-        _id:
-          $in: wantIds
-
-  displayLocations: ->
-    locations = Session.get 'locations'
-    if locations?
-      return Mpf.Collections.locations.find
-        _id:
-          $in: locations
-    else
-      locations = []
-      return Mpf.Collections.locations.find
-        _id:
-          $in: locations
-
-# XXX I moved the arrays to global to fix the duplicated values problem.
-# XXX But this is a hacky hacky hackathon solution, so ...
-haveIds = []
-wantIds = []
-locations = []
 
 Template.trades.rendered = ->
+  $('input[name="offer"]').on 'blur', ->
+    if $(this).val() == ''
+      $(this).val 0
+    else if $(this).val() != 0
+      $('input[name="want"]').val 0
 
-  $('.add-have-game-buttom').click ->
-    if (haveIds.indexOf $('#select-haveIds').val()) > -1
-      return
-    haveIds.push $('#select-haveIds').val()
-    Session.set 'haveIds', haveIds
+  $('input[name="want"]').on 'blur', ->
+    if $(this).val() == ''
+      $(this).val 0
+    else if $(this).val() != 0
+      $('input[name="offer"]').val 0
 
-  $('.add-want-game-buttom').click ->
-    if (wantIds.indexOf $('#select-wantIds').val()) > -1
-      return
-    wantIds.push $('#select-wantIds').val()
-    Session.set 'wantIds', wantIds
+Template.trade.helpers
+  offeringGame: (id) ->
+    return Mpf.Collections.inventory.findOne id
 
-  $('.add-location-buttom').click ->
-    if (locations.indexOf $('#select-location-name').val()) > -1
-      return
-    locations.push $('#select-location-name').val()
-    Session.set 'locations', locations
-
-  $('.remove-have-game-buttom').click ->
-    haveIds = [];
-    Session.set 'haveIds', haveIds
-
-  $('.remove-want-game-buttom').click ->
-    wantIds = [];
-    Session.set 'wantIds', wantIds
-
-  $('.remove-location-buttom').click ->
-    locations = [];
-    Session.set 'locations', locations
+  requestingGame: (id) ->
+    return Mpf.Collections.wishlist.findOne id
 
 AutoForm.hooks
   insertTradeForm:
@@ -90,16 +37,17 @@ AutoForm.hooks
       insert: (doc, template) ->
         doc.userId = Meteor.userId()
         doc.activeAt = new Date
-        doc.haveIds = Session.get 'haveIds'
-        doc.wantIds = Session.get 'wantIds'
-        doc.locationIds = Session.get 'locations'
-        haveIds = []
-        wantIds = []
-        locations = []
-        Session.set 'haveIds', []
-        Session.set 'wantIds', []
-        Session.set 'locations', []
 
-        $('#close-modal').click()
+        doc.haveIds = []
+        doc.wantIds = []
 
+        $('.inventory-game').each ->
+          if $(this).is(':checked')
+            doc.haveIds.push $(this).val()
+
+        $('.wishlist-game').each ->
+          if $(this).is(':checked')
+            doc.wantIds.push $(this).val()
+
+        console.log doc
         return doc
