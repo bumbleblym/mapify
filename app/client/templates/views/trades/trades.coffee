@@ -25,12 +25,12 @@ Template.trades.helpers
   displayWantIds: ->
     wantIds = Session.get 'wantIds'
     if wantIds?
-      return Mpf.Collections.inventory.find
+      return Mpf.Collections.wishlist.find
         _id:
           $in: wantIds
     else
       wantIds = []
-      return Mpf.Collections.inventory.find
+      return Mpf.Collections.wishlist.find
         _id:
           $in: wantIds
 
@@ -94,7 +94,7 @@ AutoForm.hooks
         Session.set 'haveIds', []
         Session.set 'wantIds', []
         Session.set 'locations', []
-        alert 'hihi'
+
         $('#close-modal').click()
 
         return doc
