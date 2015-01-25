@@ -1,51 +1,37 @@
 <template name="home">
+  <div class="jumbotron" id="jumbotron-id">
+      <div class="container">
+          <h1>mapify</h1>
+          <p>search. trade. play.</p>
+          <p><a class="btn btn-primary btn-lg" href="/search-trades" role="button">Search more</a></p>
+      </div>
+  </div>
   <div class="container">
-    <div class="row">
-      <p class="text-center">
-        <a href="/search-trades"> Search </a> . Trade . Play
-      </p>
-      <div class="col-xs-6 col-md-4">
-        <a href="/search-trades" class="thumbnail" id="front-page-image">
-          <img src="search.jpg" alt="Search">
-          <p class="text-center">
-            Search
-          </p>
-        </a>
+      <div class="row">
+          <div class="col-sm-6 col-md-4 homepage-images">
+              <div class="thumbnail">
+                  <img src="map.png" class="homepage-actual-images">
+                  <div class="caption">
+                      <h3>search</h3>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-6 col-md-4 homepage-images">
+              <div class="thumbnail">
+                  <img src="trade1.jpg" alt="..." class="homepage-actual-images">
+                  <div class="caption">
+                      <h3>trade</h3>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-6 col-md-4 homepage-images">
+              <div class="thumbnail">
+                  <img src="playgame.jpg" alt="..." class="homepage-actual-images">
+                  <div class="caption">
+                      <h3>play</h3>
+                  </div>
+              </div>
+          </div>
       </div>
-      <div class="col-xs-6 col-md-4">
-        <a href="/sign-in" class="thumbnail" id="front-page-image">
-          <img src="trade.jpg" alt="Trade">
-          <p class="text-center">
-            Trade
-          </p>
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-4">
-        <a href="#" class="thumbnail" id="front-page-image">
-          <img src="play.jpg" alt="Play">
-          <p class="text-center">
-            Play
-          </p>
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-md-12">
-        <a href="#" class="thumbnail">
-          <img src="skyrim-immerse.jpg" alt="Immerse" id="front-page-immersive">
-          <p class="text-center">
-            Immerse
-          </p>
-        </a>
-      </div>
-    </div>
-    <p class="text-center">
-      So, what are you waiting for? <a href="/search-trades"> Search for games to trade for in your area now. </a>
-    </p>
-    <a href="/search-trades">
-      <button type="button" id="front-page-search-button" class="btn btn-success">Search</button>
-    </a>
-    <br />
-    <br />
   </div>
 </template>
