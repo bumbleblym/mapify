@@ -5,6 +5,8 @@ Template.searchTrades.helpers
         center: new google.maps.LatLng 1.3642357001706735, 103.81599426269531
         zoom: 11
       }
+  getTrade: ->
+    return Mpf.Collections.trades.findOne()
 
 class Marker
   constructor: (trade, loc) ->
@@ -48,7 +50,19 @@ Template.searchTrades.rendered = ->
               markers[locationId].addTrade trade
             else
               loc = Mpf.Collections.locations.findOne locationId
-              markers[locationId] = new Marker(trade, loc)
+#              markers[locationId] = new Marker(trade, loc)
+              markers[locationId] = new google.maps.Marker
+                position: new google.maps.LatLng loc.latLng.lat, loc.latLng.lng
+                map: GoogleMaps.maps.searchTrades.instance
+                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+
+            google.maps.event.addListener markers[locationId], 'click', ->
+              $('#search-location-form').css 'visibility', 'visible'
+
+              $('#search-location-form-close-button').click ->
+                $('#search-location-form').css 'visibility', 'hidden'
+
+
 
         changed: (newTrade, oldTrade) ->
           @removed oldTrade

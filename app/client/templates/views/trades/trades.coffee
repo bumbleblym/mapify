@@ -40,6 +40,7 @@ AutoForm.hooks
 
         doc.haveIds = []
         doc.wantIds = []
+        doc.locationIds = [Mpf.Collections.locations.findOne()._id]
 
         $('.inventory-game').each ->
           if $(this).is(':checked')
