@@ -46,11 +46,13 @@ Template.trades.helpers
         _id:
           $in: locations
 
+# XXX I moved the arrays to global to fix the duplicated values problem.
+# XXX But this is a hacky hacky hackathon solution, so ...
+haveIds = []
+wantIds = []
+locations = []
 
 Template.trades.rendered = ->
-  haveIds = []
-  wantIds = []
-  locations = []
 
   $('.add-have-game-buttom').click ->
     if (haveIds.indexOf $('#select-haveIds').val()) > -1
@@ -91,6 +93,9 @@ AutoForm.hooks
         doc.haveIds = Session.get 'haveIds'
         doc.wantIds = Session.get 'wantIds'
         doc.locationIds = Session.get 'locations'
+        haveIds = []
+        wantIds = []
+        locations = []
         Session.set 'haveIds', []
         Session.set 'wantIds', []
         Session.set 'locations', []
