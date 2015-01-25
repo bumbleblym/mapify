@@ -34,7 +34,7 @@ Mpf.Games.searchTrades = (lat, lng, radius, criteria, projection) ->
       #console.log computeDistance location.latLng, lat, lng
       if (computeDistance location.latLng, lat, lng) < radius
         validLocs.push locId
-        if locId in selectedLocs
+        if locId of selectedLocs
           selectedLocs[locId].trades.push trade
         else
           obj =
