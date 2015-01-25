@@ -16,7 +16,8 @@ trades: array
 ###
 Mpf.Games.searchTrades = (lat, lng, radius, criteria, projection) ->
   projection.locationIds = true
-  trades = Mpf.Collections.games.find criteria, projection
+  trades = (Mpf.Collections.trades.find criteria, projection).fetch()
+  #console.log trades
   selectedTrades = []
   selectedLocs = []
 
@@ -30,6 +31,7 @@ Mpf.Games.searchTrades = (lat, lng, radius, criteria, projection) ->
       ,
         latLng: true
 
+      #console.log computeDistance location.latLng, lat, lng
       if (computeDistance location.latLng, lat, lng) < radius
         validLocs.push locId
         if locId in selectedLocs
@@ -51,15 +53,18 @@ Mpf.Games.searchTrades = (lat, lng, radius, criteria, projection) ->
   return retVal
 
 
+toRadians = (x) -> 3.141592/180*x
+
+
 computeDistance = (latLngA, latB, lngB) ->
   latA = latLngA.lat
   lngA = latLngA.lng
 
   R = 6371; # km
-  f1 = lat1.toRadians();
-  f2 = lat2.toRadians();
-  df = (lat2-lat1).toRadians();
-  dl = (lon2-lon1).toRadians();
+  f1 = toRadians(latA);
+  f2 = toRadians(latB);
+  df = toRadians(latB-latA);
+  dl = toRadians(lngB-lngA);
 
   a = Math.sin(df/2) * Math.sin(df/2) +
           Math.cos(f1) * Math.cos(f2) *
