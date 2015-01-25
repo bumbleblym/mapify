@@ -8,18 +8,18 @@ Security.defineMethod 'inventoryPartOfTrade',
   deny: (type, arg, userId, doc, fieldNames, modifier) ->
     trade = Mpf.Collections.trades.findOne
       haveIds: doc._id
-    return not trade?
+    return trade?
 
 
 Security.defineMethod 'wishlistPartOfTrade',
   deny: (type, arg, userId, doc, fieldNames, modifier) ->
     trade = Mpf.Collections.trades.findOne
       wantIds: doc._id
-    return not trade?
+    return trade?
 
 
 Security.defineMethod 'locationPartOfTrade',
   deny: (type, arg, userId, doc, fieldNames, modifier) ->
     trade = Mpf.Collections.trades.findOne
       locationIds: doc._id
-    return not trade?
+    return trade?
