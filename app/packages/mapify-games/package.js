@@ -13,8 +13,10 @@ Package.onUse(function(api) {
     ]);
 
     api.addFiles([
+        'lib/namespace.coffee',
         'lib/games.coffee',
-        'lib/schema.coffee'
+        'lib/schema.coffee',
+        'lib/searchtrades.coffee'
     ]);
 
     api.addFiles([

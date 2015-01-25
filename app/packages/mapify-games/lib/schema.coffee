@@ -56,11 +56,13 @@ Mpf.CollectionHelpers.createSchema 'inventory',
   # false means no preference
   wrapped:
     type: Boolean
+    label: 'Shrink wrapped'
     defaultValue: false
 
   # false means no preference
   dlc:
     type: Boolean
+    label: 'Includes DLC'
     defaultValue: false
 
   pic:
@@ -93,11 +95,13 @@ Mpf.CollectionHelpers.createSchema 'wishlist',
   # false means no preference
   wrapped:
     type: Boolean
+    label: 'Shrink wrapped'
     defaultValue: false
 
   # false means no preference
   dlc:
     type: Boolean
+    label: 'Includes DLC'
     defaultValue: false
 
   description:

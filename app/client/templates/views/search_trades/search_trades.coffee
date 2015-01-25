@@ -6,7 +6,7 @@ Template.searchTrades.helpers
         zoom: 11
       }
 
-Template.locations.rendered = ->
+Template.searchTrades.rendered = ->
   markers = {}
 
   @autorun ->
