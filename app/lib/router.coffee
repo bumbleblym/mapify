@@ -1,3 +1,6 @@
+IronRouterProgress.configure
+  enabled : true
+
 Router.configure
   layoutTemplate: 'layout'
 
@@ -32,7 +35,7 @@ Router.onBeforeAction ->
   GoogleMaps.load()
   @next()
 ,
-  only: ['locations']
+  only: ['locations', 'searchTrades']
 
 Router.onBeforeAction AccountsTemplates.ensureSignedIn,
   except: ['home', 'atSignIn', 'atSignUp', 'atForgotPassword', 'searchTrades']
