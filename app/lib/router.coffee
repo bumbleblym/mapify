@@ -1,6 +1,3 @@
-IronRouterProgress.configure
-  enabled : true
-
 Router.configure
   layoutTemplate: 'layout'
 
