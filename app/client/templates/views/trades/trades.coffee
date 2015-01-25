@@ -94,7 +94,7 @@ AutoForm.hooks
         Session.set 'haveIds', []
         Session.set 'wantIds', []
         Session.set 'locations', []
-        alert 'hihi'
+
         $('#close-modal').click()
 
         return doc
