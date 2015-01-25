@@ -19,6 +19,8 @@ handleGameTitle = (userId, doc) ->
       title: doc.title
       unverifiedPlatforms: [doc.platform]
       verified: false
+    Mpf.Games.lookupAndUpdateDatabase(doc.title)
+
 
 
 Mpf.Collections.inventory.before.insert handleGameTitle

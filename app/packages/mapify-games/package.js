@@ -1,14 +1,15 @@
 Package.describe({
-    summary: 'mapify games package'
+    summary: 'mapify accounts package'
 });
 
 Package.onUse(function(api) {
     api.use([
-        'mapify-accounts'
+        'mapify-collections',
+        'http@1.0.10'
     ]);
 
     api.imply([
-        'mapify-accounts'
+        'mapify-collections'
     ]);
 
     api.addFiles([
@@ -17,6 +18,7 @@ Package.onUse(function(api) {
     ]);
 
     api.addFiles([
+        'server/metacritic.coffee',
         'server/hooks.coffee',
         'server/security.coffee'
     ], 'server');
