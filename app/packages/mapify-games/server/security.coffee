@@ -3,15 +3,18 @@ Mpf.Collections.inventory.permit ['insert', 'update']
 .ifOwnsDoc().apply()
 
 Mpf.Collections.inventory.permit ['remove']
-.ifOwnsDoc().inventoryPartOfTrade().apply()
+.ifOwnsDoc().isInventoryPartOfTrade().apply()
 
 
 Mpf.Collections.wishlist.permit ['insert', 'update']
 .ifOwnsDoc().apply()
 
 Mpf.Collections.wishlist.permit ['remove']
-.ifOwnsDoc().wishlistPartOfTrade().apply()
+.ifOwnsDoc().isWishlistPartOfTrade().apply()
 
 
-Mpf.Collections.trades.permit ['insert', 'update', 'remove']
+Mpf.Collections.trades.permit ['update', 'remove']
 .ifOwnsDoc().apply()
+
+Mpf.Collections.trades.permit ['insert']
+.ifOwnsDoc().isValidTradePage().apply()
