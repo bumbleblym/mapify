@@ -19,5 +19,5 @@ collectionHelpers = Mpf.helpers.createNamespace 'CollectionHelpers',
     collections[name].attachSchema Mpf.Schemas[name]
 
 # Mirror schema helpers
-_.each (_.keys Mpf.SchemaHelpers), (helperName) ->
+_.each _.keys(Mpf.SchemaHelpers), (helperName) ->
   collectionHelpers[helperName] = Mpf.SchemaHelpers[helperName]
