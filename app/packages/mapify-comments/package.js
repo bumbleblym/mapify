@@ -1,22 +1,22 @@
 Package.describe({
-    summary: 'mapify comments package'
+  summary: 'mapify comments package'
 });
 
 Package.onUse(function(api) {
-    api.use([
-        'mapify-accounts'
-    ]);
+  api.use([
+    'mapify-accounts'
+  ]);
 
-    api.imply([
-        'mapify-accounts'
-    ]);
+  api.imply([
+    'mapify-accounts'
+  ]);
 
-    api.addFiles([
-        'lib/comments.coffee',
-        'lib/schema.coffee'
-    ]);
+  api.addFiles([
+    'lib/comments.coffee',
+    'lib/schema.coffee'
+  ]);
 
-    api.addFiles([
-        'server/security.coffee'
-    ], 'server');
+  api.addFiles([
+    'server/security.coffee'
+  ], 'server');
 });
