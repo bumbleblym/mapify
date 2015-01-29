@@ -3,7 +3,7 @@ Mpf = {}
 
 # Helpers
 Mpf.helpers =
-  createNamespace: (name, obj = {} ) ->
+  createNamespace: (name, obj = {}) ->
     if name of Mpf
       throw new Error "Namespace already exists: #{name}"
 
