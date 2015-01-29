@@ -11,9 +11,8 @@ mapify-accounts
 mapify-webapp
 mapify-accounts-ui
 mapify-locations
+mapify-games
 mapify-comments
 mapify-notifications
-
-mapify-games
 
 dburles:google-maps@1.0.3
