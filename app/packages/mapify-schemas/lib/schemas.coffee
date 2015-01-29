@@ -13,7 +13,7 @@ schemaHelpers = Mpf.helpers.createNamespace 'SchemaHelpers',
     if name !of schemas
       throw new Error "No such schema: #{name}"
 
-    unless options?.overwrite
+    unless options?.overwrite == true
       oldProps = @getSchemaProperties name
       newProps = _.keys schemaObj
       dupProps = _.intersection oldProps, newProps
