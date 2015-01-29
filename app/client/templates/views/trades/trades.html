@@ -1,19 +1,21 @@
 <template name="trades">
   <div class="container">
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    <button class="btn btn-primary btn-lg" type="button" data-toggle="modal" data-target="#myModal">
       Add Trade
     </button>
     {{#each trades}}
-    {{> trade}}
-    <hr />
+      {{> trade}}
+      <hr />
     {{/each}}
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
             <h4 class="modal-title" id="myModalLabel">Add Trade</h4>
           </div>
           <div class="modal-body">
@@ -26,24 +28,24 @@
                         <h3 class="panel-title">Offering</h3>
                       </div>
                       {{#if inventoryGames}}
-                      <div class="table-responsive">
-                        <table class="sortable table table-bordered table-striped">
-                          <tbody>
-                            {{#each inventoryGames}}
-                            <tr>
-                              <td>{{this.title}}</td>
-                              <td><input class="inventory-game" type="checkbox" value="{{this._id}}"></td>
-                            </tr>
-                            {{/each}}
-                          </tbody>
-                        </table>
-                      </div>
-                      {{else}}
-                      <div class="panel-body">
-                        <div class="alert alert-info">
-                          No games here!
+                        <div class="table-responsive">
+                          <table class="table table-bordered table-striped">
+                            <tbody>
+                              {{#each inventoryGames}}
+                                <tr>
+                                  <td>{{this.title}}</td>
+                                  <td><input class="inventory-game" type="checkbox" value="{{this._id}}"></td>
+                                </tr>
+                              {{/each}}
+                            </tbody>
+                          </table>
                         </div>
-                      </div>
+                      {{else}}
+                        <div class="panel-body">
+                          <div class="alert alert-info">
+                            No games here!
+                          </div>
+                        </div>
                       {{/if}}
                       <div class="panel-footer">
                         {{> afQuickField name='offer'}}
@@ -56,24 +58,24 @@
                         <h3 class="panel-title">Requesting</h3>
                       </div>
                       {{#if wishlistGames}}
-                      <div class="table-responsive">
-                        <table class="sortable table table-bordered table-striped">
-                          <tbody>
-                            {{#each wishlistGames}}
-                            <tr>
-                              <td>{{this.title}}</td>
-                              <td><input class="wishlist-game" type="checkbox" value="{{this._id}}"></td>
-                            </tr>
-                            {{/each}}
-                          </tbody>
-                        </table>
-                      </div>
-                      {{else}}
-                      <div class="panel-body">
-                        <div class="alert alert-info">
-                          No games here!
+                        <div class="table-responsive">
+                          <table class="table table-bordered table-striped">
+                            <tbody>
+                              {{#each wishlistGames}}
+                                <tr>
+                                  <td>{{this.title}}</td>
+                                  <td><input class="wishlist-game" type="checkbox" value="{{this._id}}"></td>
+                                </tr>
+                              {{/each}}
+                            </tbody>
+                          </table>
                         </div>
-                      </div>
+                      {{else}}
+                        <div class="panel-body">
+                          <div class="alert alert-info">
+                            No games here!
+                          </div>
+                        </div>
                       {{/if}}
                       <div class="panel-footer">
                         {{> afQuickField name='want'}}
@@ -82,11 +84,11 @@
                   </div>
                 </div>
               </fieldset>
-              <button type="submit" class="btn btn-primary">Insert</button>
+              <button class="btn btn-primary" type="submit">Insert</button>
             {{/autoForm}}
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -104,32 +106,32 @@
           <h3 class="panel-title">Offering</h3>
         </div>
         {{#if haveIds}}
-        <div class="table-responsive">
-          <table class="sortable table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Platform</th>
-              <th>Description</th>
-              <th>Wrapped?</th>
-              <th>Includes DLC?</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each haveIds}}
-            {{#with offeringGame this}}
-            <tr>
-              <td>{{title}}</td>
-              <td>{{platform}}</td>
-              <td>{{#if description}}{{description}}{{else}}none{{/if}}</td>
-              <td>{{#if wrapped}}Yes{{else}}No{{/if}}</td>
-              <td>{{#if dlc}}Yes{{else}}No{{/if}}</td>
-            </tr>
-            {{/with}}
-            {{/each}}
-          </tbody>
-          </table>
-        </div>
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Platform</th>
+                  <th>Description</th>
+                  <th>Wrapped?</th>
+                  <th>Includes DLC?</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each haveIds}}
+                  {{#with offeringGame this}}
+                    <tr>
+                      <td>{{title}}</td>
+                      <td>{{platform}}</td>
+                      <td>{{#if description}}{{description}}{{else}}none{{/if}}</td>
+                      <td>{{#if wrapped}}Yes{{else}}No{{/if}}</td>
+                      <td>{{#if dlc}}Yes{{else}}No{{/if}}</td>
+                    </tr>
+                  {{/with}}
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
         {{else}}
         <div class="panel-body">
           <div class="alert alert-info">
@@ -138,11 +140,11 @@
         </div>
         {{/if}}
         {{#if offer}}
-        <div class="panel-footer">
-          <div class="input-group">
-            <span class="input-group-addon">Topup ${{offer}}</span>
+          <div class="panel-footer">
+            <div class="input-group">
+              <span class="input-group-addon">Topup ${{offer}}</span>
+            </div>
           </div>
-        </div>
         {{/if}}
       </div>
     </div>
@@ -153,45 +155,45 @@
           <h3 class="panel-title">Requesting</h3>
         </div>
         {{#if wantIds}}
-        <div class="table-responsive">
-          <table class="sortable table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Platform</th>
-                <th>Description</th>
-                <th>Wrapped?</th>
-                <th>Includes DLC?</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each wantIds}}
-              {{#with requestingGame this}}
-              <tr>
-                <td>{{title}}</td>
-                <td>{{platform}}</td>
-                <td>{{#if description}}{{description}}{{else}}none{{/if}}</td>
-                <td>{{#if wrapped}}Yes{{else}}No{{/if}}</td>
-                <td>{{#if dlc}}Yes{{else}}No{{/if}}</td>
-              </tr>
-              {{/with}}
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
-        {{else}}
-        <div class="panel-body">
-          <div class="alert alert-info">
-            No games here!
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Platform</th>
+                  <th>Description</th>
+                  <th>Wrapped?</th>
+                  <th>Includes DLC?</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each wantIds}}
+                  {{#with requestingGame this}}
+                    <tr>
+                      <td>{{title}}</td>
+                      <td>{{platform}}</td>
+                      <td>{{#if description}}{{description}}{{else}}none{{/if}}</td>
+                      <td>{{#if wrapped}}Yes{{else}}No{{/if}}</td>
+                      <td>{{#if dlc}}Yes{{else}}No{{/if}}</td>
+                    </tr>
+                  {{/with}}
+                {{/each}}
+              </tbody>
+            </table>
           </div>
-        </div>
+        {{else}}
+          <div class="panel-body">
+            <div class="alert alert-info">
+              No games here!
+            </div>
+          </div>
         {{/if}}
         {{#if want}}
-        <div class="panel-footer">
-          <div class="input-group">
-            <span class="input-group-addon">Topup ${{want}}</span>
+          <div class="panel-footer">
+            <div class="input-group">
+              <span class="input-group-addon">Topup ${{want}}</span>
+            </div>
           </div>
-        </div>
         {{/if}}
       </div>
     </div>

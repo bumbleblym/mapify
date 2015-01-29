@@ -1,17 +1,17 @@
 <template name="searchTrades">
   {{> googleMap name="searchTrades" options=mapOptions}}
-    <div id="search-location-form" class="location-form">
-        <div class="form-top-bar">
-            <div class="form-top-bar-title">
-                Details
-            </div>
-            <div id="search-location-form-close-button" class="location-form-close-button">
-                X
-            </div>
-            <p>Phone Number: 91129013</p>
-            <div>
-                {{> trade getTrade}}
-            </div>
-        </div>
+  <div class="location-form" id="search-location-form">
+    <div class="form-top-bar">
+      <div class="form-top-bar-title">
+        Details
+      </div>
+      <div class="location-form-close-button" id="search-location-form-close-button">
+        X
+      </div>
+      <p>Phone Number: 91129013</p>
+      <div>
+        {{> trade getTrade}}
+      </div>
     </div>
+  </div>
 </template>

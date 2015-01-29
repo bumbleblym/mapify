@@ -1,79 +1,61 @@
 <template name="inventory">
   <div class="container">
-      <div id="current-inventory-list">
-          <div class="panel panel-default">
-              <div id="my-inventory-header">
-                  <div id="my-inventory-header-title" class="panel-heading"><strong>My Inventory</strong></div>
-                  <div id="add-new-inventory-modal-popup">
-                      <button type="button" id="show-add-inventory-modal" class="btn btn-success">Add new inventory</button>
-                  </div>
-              </div>
-
-              <table class="table">
-                  <thead>
-                    <tr>
-                        <th>Game Title</th>
-                        <th>Description</th>
-                        <th>Platform</th>
-                        <th>Wrapped</th>
-                        <th>DLC</th>
-                    </tr>
-                  </thead>
-                <tbody>
-                {{#each inventoryGames}}
-                  <tr>
-                      <td style="max-width: 100px">
-                        {{title}}
-                      </td>
-                      <td style="max-width: 100px">
-                        {{description}}
-                      </td>
-                      <td>
-                        {{platform}}
-                      </td>
-                      <td>
-                        {{#if wrapped}}
-                            Yes
-                          {{else}}
-                            No
-                          {{/if}}
-                      </td>
-                      <td>
-                        {{#if dlc}}
-                            Yes
-                        {{else}}
-                            No
-                        {{/if}}
-                      </td>
-                  </tr>
-                {{/each}}
-                </tbody>
-              </table>
+    <div id="current-inventory-list">
+      <div class="panel panel-default">
+        <div id="my-inventory-header">
+          <div class="panel-heading" id="my-inventory-header-title">
+            <strong>My Inventory</strong>
           </div>
+          <div id="add-new-inventory-modal-popup">
+            <button class="btn btn-success" id="show-add-inventory-modal" type="button">Add new inventory</button>
+          </div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Game Title</th>
+              <th>Description</th>
+              <th>Platform</th>
+              <th>Wrapped</th>
+              <th>DLC</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each inventoryGames}}
+              <tr>
+                <td style="max-width: 100px">{{title}}</td>
+                <td style="max-width: 100px">{{description}}</td>
+                <td>{{platform}}</td>
+                <td>{{#if wrapped}}Yes{{else}}No{{/if}}</td>
+                <td>{{#if dlc}}Yes{{else}}No{{/if}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
       </div>
-
+    </div>
     {{#autoForm collection="Mpf.Collections.inventory" id="insertInventoryForm" type="insert"}}
-    <fieldset>
-      <div class="form-top-bar">
+      <fieldset>
+        <div class="form-top-bar">
           <div class="form-top-bar-title">
-              Add to Inventory
+            Add to Inventory
           </div>
           <div class="location-form-close-button">
-              X
+            X
           </div>
-      </div>
-      <div id="add-inventory-form-body">
-        <div id="add-inventory-title">
-          {{> afQuickField name='title'}}
         </div>
-        {{> afQuickField name='platform' options="allowed"}}
-        {{> afQuickField name='wrapped'}}
-        {{> afQuickField name='dlc'}}
-        {{> afQuickField name='description' rows=6}}
-      </div>
+        <div id="add-inventory-form-body">
+          <div id="add-inventory-title">
+            {{> afQuickField name='title'}}
+          </div>
+          {{> afQuickField name='platform' options='allowed'}}
+          {{> afQuickField name='wrapped'}}
+          {{> afQuickField name='dlc'}}
+          {{> afQuickField name='description' rows=6}}
+        </div>
       </fieldset>
       <div id="add-inventory-form-button">
-          <button type="submit" class="btn btn-primary">Add</button>
+        <button class="btn btn-primary" type="submit">Add</button>
       </div>
     {{/autoForm}}
   </div>

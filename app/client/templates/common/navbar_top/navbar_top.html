@@ -2,19 +2,19 @@
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
         {{#if currentUser}}
-        <a class="navbar-brand" href="{{pathFor route='searchTrades'}}">mapify</a>
+          <a class="navbar-brand" href="{{pathFor route='searchTrades'}}">mapify</a>
         {{else}}
-        <a class="navbar-brand" href="{{pathFor route='home'}}">mapify</a>
+          <a class="navbar-brand" href="{{pathFor route='home'}}">mapify</a>
         {{/if}}
       </div>
-      <div id="navbar" class="navbar-collapse collapse">
+      <div class="navbar-collapse collapse" id="navbar">
         {{> navbarTopLeft}}
         {{> navbarTopRight}}
       </div>
@@ -25,10 +25,10 @@
 <template name="navbarTopLeft">
   <ul class="nav navbar-nav">
     {{#if currentUser}}
-    <li><a href="{{pathFor route='locations'}}">Locations</a></li>
-    <li><a href="{{pathFor route='inventory'}}">Inventory</a></li>
-    <li><a href="{{pathFor route='wishlist'}}">Wishlist</a></li>
-    <li><a href="{{pathFor route='trades'}}">My Trades</a></li>
+      <li><a href="{{pathFor route='locations'}}">Locations</a></li>
+      <li><a href="{{pathFor route='inventory'}}">Inventory</a></li>
+      <li><a href="{{pathFor route='wishlist'}}">Wishlist</a></li>
+      <li><a href="{{pathFor route='trades'}}">My Trades</a></li>
     {{/if}}
     <li><a href="{{pathFor route='searchTrades'}}">Nearby Trades</a></li>
   </ul>
