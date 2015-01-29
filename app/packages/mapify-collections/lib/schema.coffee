@@ -9,8 +9,8 @@ Mpf.CollectionHelpers.createSchema 'createdAt',
     denyUpdate: true
     autoValue: ->
       if @isInsert
-        return new Date
+        return new Date()
       else if @isUpsert
-        return $setonInsert: new Date
+        return $setonInsert: new Date()
       else
         @unset()
