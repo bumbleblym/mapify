@@ -9,7 +9,7 @@ Mpf.CollectionHelpers.createSchema 'users',
 
   profile:
     type: Object
-    
+
   "profile.phone":
     type: String
 
