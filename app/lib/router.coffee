@@ -1,5 +1,6 @@
 Router.configure
   layoutTemplate: 'layout'
+  progressDebug: false
 
 Router.route '/', ->
   @render 'home'
