@@ -26,12 +26,6 @@ AccountsTemplates.addFields [
   # re:
   # errStr: ''
 ,
-  _id: 'phone'
-  type: 'text'
-  required: true
-  displayName: 'Phone Number'
-  placeholder: 'E.g. +65 91234567'
-,
   _id: 'password'
   type: 'password'
   required: true
