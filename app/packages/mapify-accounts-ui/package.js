@@ -6,7 +6,7 @@ Package.onUse(function(api) {
   api.use([
     'mapify-accounts',
     'mapify-webapp',
-    'useraccounts:bootstrap@1.5.0'
+    'useraccounts:bootstrap@1.6.1'
   ]);
 
   api.imply([

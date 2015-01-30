@@ -11,12 +11,12 @@ Package.onUse(function(api) {
   api.imply([
     'mapify-base',
     'iron:router',
+    'multiply:iron-router-progress@1.0.1',
     'aldeed:autoform@4.2.2',
     'less@1.0.12',
-    'twbs:bootstrap@3.3.1_2',
+    'twbs:bootstrap@3.3.2',
     'fortawesome:fontawesome@4.2.0_2',
-    'sergeyt:typeahead@0.10.5_10',
-    'multiply:iron-router-progress'
+    'sergeyt:typeahead@0.10.5_10'
   ]);
 
   api.addFiles([
