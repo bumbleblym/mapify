@@ -11,7 +11,6 @@ Package.onUse(function(api) {
   api.imply([
     'mapify-base',
     'iron:router',
-    'multiply:iron-router-progress@1.0.1',
     'aldeed:autoform@4.2.2',
     'less@1.0.12',
     'twbs:bootstrap@3.3.2',
