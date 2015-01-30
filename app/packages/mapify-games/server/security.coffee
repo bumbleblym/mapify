@@ -1,20 +1,51 @@
-# XXX Deny removal of inventory / wishlist items that are part of a trade
-Mpf.Collections.inventory.permit ['insert', 'update']
-.ifOwnsDoc().apply()
+Security.defineMethod 'isInventoryPartOfTrade',
+  deny: (type, arg, userId, doc, fieldNames, modifier) ->
+    trade = Mpf.Collections.trades.findOne
+      haveIds: doc._id
+    return trade?
 
-Mpf.Collections.inventory.permit ['remove']
-.ifOwnsDoc().isInventoryPartOfTrade().apply()
+Security.defineMethod 'isWishlistPartOfTrade',
+  deny: (type, arg, userId, doc, fieldNames, modifier) ->
+    trade = Mpf.Collections.trades.findOne
+      wantIds: doc._id
+    return trade?
 
+Security.defineMethod 'isLocationPartOfTrade',
+  deny: (type, arg, userId, doc, fieldNames, modifier) ->
+    trade = Mpf.Collections.trades.findOne
+      locationIds: doc._id
+    return trade?
 
-Mpf.Collections.wishlist.permit ['insert', 'update']
-.ifOwnsDoc().apply()
+Security.defineMethod 'isValidTradePage',
+  fetch: ['userId']
+  deny: (type, arg, userId, doc, fieldNames, modifier) ->
+    if not doc.locationIds? || doc.locationIds.length < 1
+      return true
+    if (not doc.haveIds? || doc.haveIds.length < 1) and
+        (not doc.wantIds? || doc.wantIds.length < 1)
+      return true
 
-Mpf.Collections.wishlist.permit ['remove']
-.ifOwnsDoc().isWishlistPartOfTrade().apply()
+    for id in doc.locationIds
+      item = Mpf.Collections.locations.findOne
+        _id: id
+      ,
+        userId: true
+      if not item? or item.userId != userId
+        return true
 
+    for id in doc.haveIds
+      item = Mpf.Collections.inventory.findOne
+        _id: id
+      ,
+        userId: true
+      if not item? or item.userId != userId
+        return true
 
-Mpf.Collections.trades.permit ['update', 'remove']
-.ifOwnsDoc().apply()
-
-Mpf.Collections.trades.permit ['insert']
-.ifOwnsDoc().isValidTradePage().apply()
+    for id in doc.wantIds
+      item = Mpf.Collections.wishlist.findOne
+        _id: id
+      ,
+        userId: true
+      if not item? or item.userId != userId
+        return true
+    return false
