@@ -1,3 +1,4 @@
+# Set title
 Router.onAfterAction (req, res, next) ->
   document.title = 'mapify'
 
