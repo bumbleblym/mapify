@@ -1,5 +1,5 @@
 # Set title
-Router.onAfterAction (req, res, next) ->
+Router.onAfterAction ->
   document.title = 'mapify'
 
   if @route.options.title?
