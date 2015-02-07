@@ -4,12 +4,12 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.use([
-    'mapify-collections',
+    'mapify-accounts',
     'http@1.0.10'
   ]);
 
   api.imply([
-    'mapify-collections'
+    'mapify-accounts'
   ]);
 
   api.addFiles([
