@@ -1,7 +1,5 @@
-# Create schemas namespace
 schemas = Mpf.helpers.createNamespace 'Schemas'
 
-# Create schema helpers namespace
 schemaHelpers = Mpf.helpers.createNamespace 'SchemaHelpers',
   createSchema: (name, schemaObj) ->
     if name of schemas

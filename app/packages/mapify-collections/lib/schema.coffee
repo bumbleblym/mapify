@@ -1,8 +1,6 @@
-# Add SimpleSchema validation error messages
 SimpleSchema.messages
   sameIds: '[label] cannot be the same as another id field'
 
-# Define sub-schemas
 Mpf.CollectionHelpers.createSchema 'createdAt',
   createdAt:
     type: Date

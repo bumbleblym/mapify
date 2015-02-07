@@ -1,7 +1,5 @@
-# Create collections namespace
 collections = Mpf.helpers.createNamespace 'Collections'
 
-# Create collection helpers namespace
 collectionHelpers = Mpf.helpers.createNamespace 'CollectionHelpers',
   createCollection: (name, options) ->
     if name of collections
