@@ -1,35 +1,40 @@
 <template name="home">
-  <div class="jumbotron" id="jumbotron-id">
+  <div class="jumbotron jumbotron-home">
     <div class="container">
       <h1>mapify</h1>
-      <p>search. trade. play.</p>
-      <p><a class="btn btn-primary btn-lg" href="/search-trades" role="button">Search more</a></p>
+      <p>The best prices. The best deals. The best games.</p>
+      <p>Start saving; start saving the world!</p>
+      <p><a class="btn btn-primary btn-lg" href="{{pathFor route='nearbyTrades'}}" role="button">Browse nearby trades &raquo;</a>
+      </p>
     </div>
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 col-md-4 homepage-images">
+      <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img class="homepage-actual-images" src="map.png">
+          <img class="img-home-grid" src="search.png" alt="search">
           <div class="caption">
             <h3>search</h3>
           </div>
+          <p class="text-muted">It's never been easier to save money on games! Finished a game and want to trade it for the hottest games? Browse the latest trades and get what you want!</p>
         </div>
       </div>
-      <div class="col-sm-6 col-md-4 homepage-images">
+      <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img class="homepage-actual-images" src="trade1.jpg" alt="...">
+          <img class="img-home-grid" src="trade.jpg" alt="trade">
           <div class="caption">
             <h3>trade</h3>
           </div>
+          <p class="text-muted">Less travelling, more playing! Trade with other gamers near your home, school, or office. You might even make new friends to share games with!</p>
         </div>
       </div>
-      <div class="col-sm-6 col-md-4 homepage-images">
+      <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img class="homepage-actual-images" src="playgame.jpg" alt="...">
+          <img class="img-home-grid" src="play.jpg" alt="play">
           <div class="caption">
             <h3>play</h3>
           </div>
+          <p class="text-muted">Save time and money so you can play more - for less! No more bumping threads in buy/sell forums. Just create a trade - it's that simple!</p>
         </div>
       </div>
     </div>
