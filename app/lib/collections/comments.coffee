@@ -1,1 +1,0 @@
-Mpf.CollectionHelpers.attachSchema 'comments'
