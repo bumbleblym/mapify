@@ -17,6 +17,6 @@ Package.onUse(function(api) {
 
   api.addFiles([
     'lib/collections.coffee',
-    'lib/schema.coffee'
+    'lib/schemas.coffee'
   ]);
 });
