@@ -1,5 +1,5 @@
 Package.describe({
-  summary: 'mapify accounts package'
+  summary: 'mapify games package'
 });
 
 Package.onUse(function(api) {
@@ -13,9 +13,12 @@ Package.onUse(function(api) {
   ]);
 
   api.addFiles([
-    'lib/namespace.coffee',
+    'lib/platforms.coffee',
     'lib/games.coffee',
-    'lib/schema.coffee',
+    'lib/inventory.coffee',
+    'lib/wishlist.coffee',
+    'lib/trades.coffee',
+    'lib/namespace.coffee',
     'lib/searchtrades.coffee'
   ]);
 

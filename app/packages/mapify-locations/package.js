@@ -12,7 +12,6 @@ Package.onUse(function(api) {
   ]);
 
   api.addFiles([
-    'lib/locations.coffee',
-    'lib/schema.coffee'
+    'lib/locations.coffee'
   ]);
 });

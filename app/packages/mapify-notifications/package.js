@@ -12,7 +12,6 @@ Package.onUse(function(api) {
   ]);
 
   api.addFiles([
-    'lib/notifications.coffee',
-    'lib/schema.coffee'
+    'lib/notifications.coffee'
   ]);
 });

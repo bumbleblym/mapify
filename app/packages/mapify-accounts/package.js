@@ -15,8 +15,7 @@ Package.onUse(function(api) {
   ]);
 
   api.addFiles([
-    'lib/alias.coffee',
-    'lib/schema.coffee'
+    'lib/users.coffee'
   ]);
 
   api.addFiles([

@@ -12,7 +12,6 @@ Package.onUse(function(api) {
   ]);
 
   api.addFiles([
-    'lib/comments.coffee',
-    'lib/schema.coffee'
+    'lib/comments.coffee'
   ]);
 });

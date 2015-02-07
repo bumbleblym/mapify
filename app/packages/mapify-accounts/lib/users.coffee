@@ -1,3 +1,5 @@
+Mpf.Collections.users = Meteor.users
+
 Mpf.CollectionHelpers.createSchema 'users',
   username:
     type: String
