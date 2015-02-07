@@ -22,3 +22,6 @@ Mpf.Collections.trades.permit ['update', 'remove']
 
 Mpf.Collections.trades.permit ['insert']
 .ifOwnsDoc().isValidTradePage().apply()
+
+Mpf.Collections.comments.permit ['insert', 'update', 'remove']
+.ifOwnsDoc().apply()

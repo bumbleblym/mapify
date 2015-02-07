@@ -15,8 +15,4 @@ Package.onUse(function(api) {
     'lib/comments.coffee',
     'lib/schema.coffee'
   ]);
-
-  api.addFiles([
-    'server/security.coffee'
-  ], 'server');
 });
