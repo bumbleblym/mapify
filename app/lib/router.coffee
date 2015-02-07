@@ -29,11 +29,5 @@ Router.route 'search-trades', ->
   waitOn: ->
     return Meteor.subscribe 'trades'
 
-Router.onBeforeAction ->
-  GoogleMaps.load()
-  @next()
-,
-  only: ['locations', 'searchTrades']
-
 Router.onBeforeAction AccountsTemplates.ensureSignedIn,
   except: ['home', 'atSignIn', 'atSignUp', 'atForgotPassword', 'searchTrades']

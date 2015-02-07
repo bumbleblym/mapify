@@ -1,0 +1,2 @@
+Meteor.startup ->
+  GoogleMaps.load()
