@@ -7,9 +7,6 @@ Mpf.CollectionHelpers.createSchema 'users',
     type: [Object]
     blackbox: true
 
-  profile:
-    type: Object
-
   services:
     type: Object
     blackbox: true
