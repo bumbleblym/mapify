@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
         </button>
         {{#if currentUser}}
-          <a class="navbar-brand" href="{{pathFor route='searchTrades'}}">mapify</a>
+          <a class="navbar-brand" href="{{pathFor route='nearbyTrades'}}">mapify</a>
         {{else}}
           <a class="navbar-brand" href="{{pathFor route='home'}}">mapify</a>
         {{/if}}
@@ -30,7 +30,7 @@
       <li><a href="{{pathFor route='wishlist'}}">Wishlist</a></li>
       <li><a href="{{pathFor route='trades'}}">My Trades</a></li>
     {{/if}}
-    <li><a href="{{pathFor route='searchTrades'}}">Nearby Trades</a></li>
+    <li><a href="{{pathFor route='nearbyTrades'}}">Nearby Trades</a></li>
   </ul>
 </template>
 

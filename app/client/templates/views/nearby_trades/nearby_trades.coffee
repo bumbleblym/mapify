@@ -1,4 +1,4 @@
-Template.searchTrades.helpers
+Template.nearbyTrades.helpers
   mapOptions: ->
     if GoogleMaps.loaded()
       return {
@@ -15,7 +15,7 @@ class Marker
 
     @marker = new google.maps.Marker
       position: new google.maps.LatLng loc.latLng.lat, loc.latLng.lng
-      map: GoogleMaps.maps.searchTrades.instance
+      map: GoogleMaps.maps.nearbyTrades.instance
       icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 
   addTrade: (trade) ->
@@ -33,7 +33,7 @@ class Marker
 
 
 
-Template.searchTrades.rendered = ->
+Template.nearbyTrades.rendered = ->
   markers = {}
 
   @autorun ->
@@ -53,7 +53,7 @@ Template.searchTrades.rendered = ->
 #              markers[locationId] = new Marker(trade, loc)
               markers[locationId] = new google.maps.Marker
                 position: new google.maps.LatLng loc.latLng.lat, loc.latLng.lng
-                map: GoogleMaps.maps.searchTrades.instance
+                map: GoogleMaps.maps.nearbyTrades.instance
                 icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 
             google.maps.event.addListener markers[locationId], 'click', ->

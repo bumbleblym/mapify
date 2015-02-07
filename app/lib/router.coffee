@@ -21,13 +21,13 @@ Router.route 'trades',
   title: 'My Trades'
 
 # XXX limit trades
-Router.route 'search-trades', ->
-  @render 'searchTrades'
+Router.route 'nearby-trades', ->
+  @render 'nearbyTrades'
 ,
-  name: 'searchTrades'
-  title: 'Search Trades'
+  name: 'nearbyTrades'
+  title: 'Nearby Trades'
   waitOn: ->
     return Meteor.subscribe 'trades'
 
 Router.onBeforeAction AccountsTemplates.ensureSignedIn,
-  except: ['home', 'atSignIn', 'atSignUp', 'atForgotPassword', 'searchTrades']
+  except: ['home', 'atSignIn', 'atSignUp', 'atForgotPassword', 'nearbyTrades']
